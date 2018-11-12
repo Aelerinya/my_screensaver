@@ -6,3 +6,4 @@
 */
 
 int disp_error_in_arguments(int ac);
+int disp_usage(void);
