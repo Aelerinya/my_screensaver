@@ -8,6 +8,7 @@
 #include <SFML/Graphics.h>
 #include "framebuffer_t.h"
 #include "screensaver_t.h"
+#include "ssv_data_t.h"
 
 int disp_error_in_arguments(int ac);
 int disp_usage(void);
