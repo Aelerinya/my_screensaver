@@ -7,20 +7,18 @@
 
 #include <SFML/Graphics.h>
 #include <SFML/Window.h>
+#include <SFML/System.h>
+#include <stdlib.h>
 #include "prototypes.h"
 #include "globals.h"
 
 int start_screensaver(int ssv)
 {
-    sfRenderWindow *window;
-    sfVideoMode mode = {800, 600, 32};
-    framebuffer_t *fb = framebuffer_create(800, 600);
+    ssv_data_t *data = init_ssv_data(ssv);
 
-    window = sfRenderWindow_create(mode, "My screensaver", sfDefaultStyle, NULL);
-    sfRenderWindow_setFramerateLimit(window, 60);
-    while (sfRenderWindow_isOpen(window))
-        screensaver_list[ssv - 1].f(fb, window, &ssv);
-    sfRenderWindow_destroy(window);
+    while (sfRenderWindow_isOpen(data->window))
+        screensaver_list[ssv - 1].f(data->fb, data->window, &ssv);
+    sfRenderWindow_destroy(data->window);
     return (0);
 }
 
@@ -55,4 +53,21 @@ sfTexture *texture, sfSprite *sprite)
     sfSprite_setTexture(sprite, texture, sfFalse);
     sfRenderWindow_drawSprite(window, sprite, NULL);
     sfRenderWindow_display(window);
+}
+
+ssv_data_t *init_ssv_data(int ssv)
+{
+    ssv_data_t *data = malloc(sizeof(ssv_data_t));
+    framebuffer_t *fb = framebuffer_create(800, 600);
+    sfVideoMode mode = {fb->width, fb->height, 32};
+
+    data->window = sfRenderWindow_create(mode, "My screensaver",
+    sfDefaultStyle, NULL);
+    sfRenderWindow_setFramerateLimit(data->window, 60);
+    data->texture = sfTexture_create(fb->width, fb->height);
+    data->sprite = sfSprite_create();
+    data->fb = fb;
+    data->ssv = ssv;
+    data->elapsed_time = sfClock_create();
+    return data;
 }
