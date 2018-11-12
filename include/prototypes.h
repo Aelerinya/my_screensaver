@@ -15,3 +15,5 @@ int start_screensaver(void);
 void event_loop(sfRenderWindow *window);
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+void put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y,
+sfColor color);
