@@ -7,8 +7,8 @@
 
 #include <SFML/Graphics.h>
 #include "framebuffer_t.h"
-#include "screensaver_t.h"
 #include "ssv_data_t.h"
+#include "screensaver_t.h"
 
 int disp_error_in_arguments(int ac);
 int disp_usage(void);
@@ -16,14 +16,13 @@ int disp_error_invalid_id(int ssv);
 int start_screensaver(int ssv);
 ssv_data_t *init_ssv_data(int ssv);
 
-int event_loop(sfRenderWindow *window, int *ssv);
+int event_loop(ssv_data_t *data);
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
 void put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y,
 sfColor color);
-void display_framebuffer(sfRenderWindow *window, framebuffer_t *fb,
-sfTexture *texture, sfSprite *sprite);
+void display_framebuffer(ssv_data_t *data);
 
-int first_screensaver(framebuffer_t *fb, sfRenderWindow *window, int *ssv);
-int second_screensaver(framebuffer_t *fb, sfRenderWindow *window, int *ssv);
-int third_screensaver(framebuffer_t *fb, sfRenderWindow *window, int *ssv);
+int first_screensaver(ssv_data_t *data);
+int second_screensaver(ssv_data_t *data);
+int third_screensaver(ssv_data_t *data);

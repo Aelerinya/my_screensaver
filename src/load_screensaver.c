@@ -17,42 +17,39 @@ int start_screensaver(int ssv)
     ssv_data_t *data = init_ssv_data(ssv);
 
     while (sfRenderWindow_isOpen(data->window))
-        screensaver_list[ssv - 1].f(data->fb, data->window, &ssv);
+        screensaver_list[data->ssv - 1].f(data);
     sfRenderWindow_destroy(data->window);
     return (0);
 }
 
-int event_loop(sfRenderWindow *window, int *ssv)
+int event_loop(ssv_data_t *data)
 {
     sfEvent event;
 
-    while (sfRenderWindow_pollEvent(window, &event)) {
+    while (sfRenderWindow_pollEvent(data->window, &event)) {
         if (event.type == sfEvtClosed) {
-            sfRenderWindow_close(window);
+            sfRenderWindow_close(data->window);
             return (0);
         }
     }
     if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
-        *ssv = (*ssv > 1) ? *ssv - 1 : MAX_ID;
-        my_put_nbr(*ssv);
+        data->ssv = (data->ssv > 1) ? data->ssv - 1 : MAX_ID;
         return (0);
     } else if (sfKeyboard_isKeyPressed(sfKeyRight)) {
-        *ssv = (*ssv < MAX_ID) ? *ssv + 1 : 1;
-        my_put_nbr(*ssv);
+        data->ssv = (data->ssv < MAX_ID) ? data->ssv + 1 : 1;
         return (0);
     }
     return (1);
 }
 
-void display_framebuffer(sfRenderWindow *window, framebuffer_t *fb,
-sfTexture *texture, sfSprite *sprite)
+void display_framebuffer(ssv_data_t *data)
 {
-    sfRenderWindow_clear(window, sfBlack);
-    sfTexture_updateFromPixels(texture, fb->pixels,
-    fb->width, fb->height, 0, 0);
-    sfSprite_setTexture(sprite, texture, sfFalse);
-    sfRenderWindow_drawSprite(window, sprite, NULL);
-    sfRenderWindow_display(window);
+    sfRenderWindow_clear(data->window, sfBlack);
+    sfTexture_updateFromPixels(data->texture, data->fb->pixels,
+    data->fb->width, data->fb->height, 0, 0);
+    sfSprite_setTexture(data->sprite, data->texture, sfFalse);
+    sfRenderWindow_drawSprite(data->window, data->sprite, NULL);
+    sfRenderWindow_display(data->window);
 }
 
 ssv_data_t *init_ssv_data(int ssv)
