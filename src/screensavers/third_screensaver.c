@@ -8,7 +8,7 @@
 #include <SFML/Graphics.h>
 #include "prototypes.h"
 
-int third_screensaver(framebuffer_t *fb, sfRenderWindow *window)
+int third_screensaver(framebuffer_t *fb, sfRenderWindow *window, int *ssv)
 {
     sfTexture *texture;
     sfSprite *sprite;
@@ -21,8 +21,7 @@ int third_screensaver(framebuffer_t *fb, sfRenderWindow *window)
         fb->pixels[i + 2] = 0;
         fb->pixels[i + 3] = 255;
     }
-    while (sfRenderWindow_isOpen(window)) {
-        event_loop(window);
+    while (event_loop(window, ssv)) {
         display_framebuffer(window, fb, texture, sprite);
     }
     return (0);

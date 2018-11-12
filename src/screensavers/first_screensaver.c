@@ -8,7 +8,7 @@
 #include <SFML/Graphics.h>
 #include "prototypes.h"
 
-int first_screensaver(framebuffer_t *fb, sfRenderWindow *window)
+int first_screensaver(framebuffer_t *fb, sfRenderWindow *window, int *ssv)
 {
     sfTexture *texture;
     sfSprite *sprite;
@@ -17,8 +17,7 @@ int first_screensaver(framebuffer_t *fb, sfRenderWindow *window)
     sprite = sfSprite_create();
     for (unsigned int i = 0; i < fb->width * fb->height * 4; i++)
         fb->pixels[i] = 255;
-    while (sfRenderWindow_isOpen(window)) {
-        event_loop(window);
+    while (event_loop(window, ssv)) {
         display_framebuffer(window, fb, texture, sprite);
     }
     return (0);

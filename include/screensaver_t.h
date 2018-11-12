@@ -9,5 +9,5 @@
 
 typedef struct screensaver {
     char *description;
-    int (*f)(framebuffer_t *fb, sfRenderWindow *window);
+    int (*f)(framebuffer_t *fb, sfRenderWindow *window, int *ssv);
 } screensaver_t;

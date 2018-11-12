@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
+#include <SFML/Window.h>
 #include "prototypes.h"
 #include "globals.h"
 
@@ -16,19 +17,33 @@ int start_screensaver(int ssv)
     framebuffer_t *fb = framebuffer_create(800, 600);
 
     window = sfRenderWindow_create(mode, "My screensaver", sfDefaultStyle, NULL);
-    screensaver_list[ssv - 1].f(fb, window);
+    sfRenderWindow_setFramerateLimit(window, 60);
+    while (sfRenderWindow_isOpen(window))
+        screensaver_list[ssv - 1].f(fb, window, &ssv);
     sfRenderWindow_destroy(window);
     return (0);
 }
 
-void event_loop(sfRenderWindow *window)
+int event_loop(sfRenderWindow *window, int *ssv)
 {
     sfEvent event;
 
     while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
+        if (event.type == sfEvtClosed) {
             sfRenderWindow_close(window);
+            return (0);
+        }
     }
+    if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
+        *ssv = (*ssv > 1) ? *ssv - 1 : MAX_ID;
+        my_put_nbr(*ssv);
+        return (0);
+    } else if (sfKeyboard_isKeyPressed(sfKeyRight)) {
+        *ssv = (*ssv < MAX_ID) ? *ssv + 1 : 1;
+        my_put_nbr(*ssv);
+        return (0);
+    }
+    return (1);
 }
 
 void display_framebuffer(sfRenderWindow *window, framebuffer_t *fb,
