@@ -11,7 +11,8 @@
 
 int disp_error_in_arguments(int ac);
 int disp_usage(void);
-int start_screensaver(void);
+int disp_error_invalid_id(int ssv);
+int start_screensaver(int ssv);
 
 void event_loop(sfRenderWindow *window);
 

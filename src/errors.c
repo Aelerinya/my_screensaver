@@ -35,3 +35,13 @@ int disp_usage(void)
     my_putstr(" RIGHT_ARROW      switch to the next animation.\n");
     return (0);
 }
+
+int disp_error_invalid_id(int ssv)
+{
+    my_putstr("Invalid animation ID : ");
+    my_putstr(my_nbr_to_str(ssv));
+    my_putstr("\nThe animation id must be an integer between 1 and ");
+    my_putstr(my_nbr_to_str(MAX_ID));
+    my_putstr(".\n");
+    return (84);
+}

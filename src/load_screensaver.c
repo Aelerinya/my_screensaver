@@ -9,14 +9,14 @@
 #include "prototypes.h"
 #include "globals.h"
 
-int start_screensaver(void)
+int start_screensaver(int ssv)
 {
     sfRenderWindow *window;
     sfVideoMode mode = {800, 600, 32};
     framebuffer_t *fb = framebuffer_create(800, 600);
 
     window = sfRenderWindow_create(mode, "My screensaver", sfDefaultStyle, NULL);
-    screensaver_list[0].f(fb, window);
+    screensaver_list[ssv - 1].f(fb, window);
     sfRenderWindow_destroy(window);
     return (0);
 }
