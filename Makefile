@@ -7,9 +7,9 @@
 
 MAIN = src/main.c
 SRC = 	src/errors.c \
-	src/screensaver.c \
+	src/load_screensaver.c \
 	src/framebuffer.c \
-	src/first_screensaver.c
+	src/screensavers/first_screensaver.c
 OBJ = $(notdir $(MAIN:.c=.o)) $(notdir $(SRC:.c=.o))
 
 CSFML = -lcsfml-graphics
