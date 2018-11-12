@@ -6,9 +6,12 @@
 ##
 
 MAIN = src/main.c
-SRC = src/errors.c
+SRC = 	src/errors.c \
+	src/screensaver.c \
+	src/framebuffer.c
 OBJ = $(notdir $(MAIN:.c=.o)) $(notdir $(SRC:.c=.o))
 
+CSFML = -lcsfml-graphics
 LIB = my
 L_PATH = ./lib/my/
 I_PATH = ./include/
@@ -18,7 +21,7 @@ NAME = my_screensaver
 all: lib $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -o $(NAME) $(OBJ) -L$(L_PATH) -l$(LIB)
+	gcc -o $(NAME) $(CSFML) $(OBJ) -L$(L_PATH) -l$(LIB)
 
 $(OBJ):
 	gcc -c $(MAIN) $(SRC) -I$(I_PATH)

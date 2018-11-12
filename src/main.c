@@ -8,6 +8,7 @@
 #include "main.h"
 #include "prototypes.h"
 #include "my.h"
+#include <stdlib.h>
 
 int main(int ac, char **av)
 {
@@ -15,5 +16,6 @@ int main(int ac, char **av)
         return disp_error_in_arguments(ac);
     if (my_strcmp(av[1], "-h") == 0)
         return disp_usage();
+    start_screensaver();
     return (0);
 }
