@@ -6,7 +6,8 @@
 ##
 
 MAIN = src/main.c
-OBJ = $(notdir $(MAIN:.c=.o))
+SRC = src/errors.c
+OBJ = $(notdir $(MAIN:.c=.o)) $(notdir $(SRC:.c=.o))
 
 LIB = my
 L_PATH = ./lib/my/
@@ -20,18 +21,18 @@ $(NAME): $(OBJ)
 	gcc -o $(NAME) $(OBJ) -L$(L_PATH) -l$(LIB)
 
 $(OBJ):
-	gcc -c $(MAIN) -I$(I_PATH)
+	gcc -c $(MAIN) $(SRC) -I$(I_PATH)
 
 lib:
-	$(MAKE) -C $(L_PATH)
+	$(MAKE) -s -C $(L_PATH)
 
 clean:
 	rm -f $(OBJ)
-	$(MAKE) -C $(L_PATH) clean
+	$(MAKE) -s -C $(L_PATH) clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(L_PATH) fclean
+	$(MAKE) -s -C $(L_PATH) fclean
 
 re: fclean all
 
