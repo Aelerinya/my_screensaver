@@ -8,7 +8,8 @@
 MAIN = src/main.c
 SRC = 	src/errors.c \
 	src/screensaver.c \
-	src/framebuffer.c
+	src/framebuffer.c \
+	src/first_screensaver.c
 OBJ = $(notdir $(MAIN:.c=.o)) $(notdir $(SRC:.c=.o))
 
 CSFML = -lcsfml-graphics
@@ -21,10 +22,10 @@ NAME = my_screensaver
 all: lib $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -o $(NAME) $(CSFML) $(OBJ) -L$(L_PATH) -l$(LIB)
+	gcc -o $(NAME) $(CSFML) $(OBJ) -L$(L_PATH) -l$(LIB) -Wall -Wextra -pedantic
 
 $(OBJ):
-	gcc -c $(MAIN) $(SRC) -I$(I_PATH)
+	gcc -g3 -c $(MAIN) $(SRC) -I$(I_PATH) -Wall -Wextra -pedantic
 
 lib:
 	$(MAKE) -s -C $(L_PATH)
