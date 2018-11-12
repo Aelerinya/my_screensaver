@@ -11,5 +11,5 @@ typedef struct ssv_data {
     sfSprite *sprite;
     framebuffer_t *fb;
     int ssv;
-    sfClock* time_elapsed;
+    sfClock* elapsed_time;
 } ssv_data_t;
