@@ -9,4 +9,4 @@
 
 extern int MAX_ID;
 extern screensaver_t first;
-extern screensaver_t screensaver_list[1];
+extern screensaver_t screensaver_list[3];

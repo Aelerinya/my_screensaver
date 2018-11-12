@@ -22,3 +22,5 @@ void display_framebuffer(sfRenderWindow *window, framebuffer_t *fb,
 sfTexture *texture, sfSprite *sprite);
 
 int first_screensaver(framebuffer_t *fb, sfRenderWindow *window);
+int second_screensaver(framebuffer_t *fb, sfRenderWindow *window);
+int third_screensaver(framebuffer_t *fb, sfRenderWindow *window);
