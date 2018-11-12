@@ -5,6 +5,7 @@
 ** Basic functions to manipulate framebuffers
 */
 
+#include <SFML/Graphics.h>
 #include "framebuffer_t.h"
 #include <stdlib.h>
 

@@ -5,8 +5,8 @@
 ** Main of the my_screensaver project : error management
 */
 
-#include "main.h"
 #include "prototypes.h"
+#include "main.h"
 #include "my.h"
 #include <stdlib.h>
 

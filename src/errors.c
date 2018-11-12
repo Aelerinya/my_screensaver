@@ -5,6 +5,7 @@
 ** Error management
 */
 
+#include "prototypes.h"
 #include "globals.h"
 #include "my.h"
 
