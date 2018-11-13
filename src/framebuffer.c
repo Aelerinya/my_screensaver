@@ -31,3 +31,13 @@ sfColor color)
     framebuffer->pixels[position + 2] = color.b;
     framebuffer->pixels[position + 3] = color.a;
 }
+
+void reset_framebuffer(framebuffer_t *fb, sfColor color)
+{
+    for (unsigned int i = 0; i < fb->width * fb->height * 4; i += 4) {
+        fb->pixels[i] = color.r;
+        fb->pixels[i + 1] = color.g;
+        fb->pixels[i + 2] = color.b;
+        fb->pixels[i + 3] = color.a;
+    }
+}
