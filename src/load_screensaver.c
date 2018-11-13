@@ -16,10 +16,29 @@ int start_screensaver(int ssv)
 {
     ssv_data_t *data = init_ssv_data(ssv);
 
-    while (sfRenderWindow_isOpen(data->window))
+    while (sfRenderWindow_isOpen(data->window)) {
         screensaver_list[data->ssv - 1].f(data);
+        sfClock_restart(data->elapsed_time);
+    }
     sfRenderWindow_destroy(data->window);
     return (0);
+}
+
+int change_screensaver(ssv_data_t *data)
+{
+    sfInt64 elapsed = sfClock_getElapsedTime(data->elapsed_time).microseconds;
+    sfInt64 interval = sfSeconds(30).microseconds;
+    sfInt64 min_interval = sfMilliseconds(200).microseconds;
+
+    if (sfKeyboard_isKeyPressed(sfKeyLeft) && elapsed > min_interval) {
+        data->ssv = (data->ssv > 1) ? data->ssv - 1 : MAX_ID;
+        return (0);
+    } else if ((sfKeyboard_isKeyPressed(sfKeyRight) &&
+                elapsed > min_interval) || elapsed > interval) {
+        data->ssv = (data->ssv < MAX_ID) ? data->ssv + 1 : 1;
+        return (0);
+    }
+    return (1);
 }
 
 int event_loop(ssv_data_t *data)
@@ -32,14 +51,7 @@ int event_loop(ssv_data_t *data)
             return (0);
         }
     }
-    if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
-        data->ssv = (data->ssv > 1) ? data->ssv - 1 : MAX_ID;
-        return (0);
-    } else if (sfKeyboard_isKeyPressed(sfKeyRight)) {
-        data->ssv = (data->ssv < MAX_ID) ? data->ssv + 1 : 1;
-        return (0);
-    }
-    return (1);
+    return change_screensaver(data);
 }
 
 void display_framebuffer(ssv_data_t *data)
