@@ -28,5 +28,5 @@ void reset_framebuffer(framebuffer_t *fb, sfColor color);
 
 int first_screensaver(ssv_data_t *data);
 int second_screensaver(ssv_data_t *data);
-int third_screensaver(ssv_data_t *data);
+int squares(ssv_data_t *data);
 int lines(ssv_data_t *data);

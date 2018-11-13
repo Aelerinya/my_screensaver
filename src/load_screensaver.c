@@ -69,7 +69,7 @@ void display_framebuffer(ssv_data_t *data)
 ssv_data_t *init_ssv_data(int ssv)
 {
     ssv_data_t *data = malloc(sizeof(ssv_data_t));
-    framebuffer_t *fb = framebuffer_create(800, 600);
+    framebuffer_t *fb = framebuffer_create(1920, 1080);
     sfVideoMode mode = {fb->width, fb->height, 32};
 
     data->window = sfRenderWindow_create(mode, "My screensaver",
