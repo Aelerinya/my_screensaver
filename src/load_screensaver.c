@@ -9,6 +9,7 @@
 #include <SFML/Window.h>
 #include <SFML/System.h>
 #include <stdlib.h>
+#include <time.h>
 #include "prototypes.h"
 #include "globals.h"
 
@@ -16,6 +17,7 @@ int start_screensaver(int ssv)
 {
     ssv_data_t *data = init_ssv_data(ssv);
 
+    srand(time(NULL));
     while (sfRenderWindow_isOpen(data->window)) {
         screensaver_list[data->ssv - 1].f(data);
         sfClock_restart(data->elapsed_time);
