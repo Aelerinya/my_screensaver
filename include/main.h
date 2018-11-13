@@ -12,5 +12,5 @@ const screensaver_t screensaver_list[4] = {
 {"first screensaver", &first_screensaver},
 {"second screensaver", &second_screensaver},
 {"third screensaver", &third_screensaver},
-{"lines", &lines}
+{"print horizontal and vertical lines at random", &lines}
 };
