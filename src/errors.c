@@ -45,3 +45,14 @@ int disp_error_invalid_id(int ssv)
     my_putstr(".\n");
     return (84);
 }
+
+int disp_screensaver_list(void)
+{
+    for (int i = 0; i < MAX_ID; i++) {
+        my_put_nbr(i + 1);
+        my_putstr(": ");
+        my_putstr(screensaver_list[i].description);
+        my_putchar('\n');
+    }
+    return (0);
+}

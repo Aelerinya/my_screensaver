@@ -13,6 +13,8 @@
 int disp_error_in_arguments(int ac);
 int disp_usage(void);
 int disp_error_invalid_id(int ssv);
+int disp_screensaver_list(void);
+
 int start_screensaver(int ssv);
 ssv_data_t *init_ssv_data(int ssv);
 
