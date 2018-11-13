@@ -7,9 +7,10 @@
 
 #pragma once
 
-const int MAX_ID = 3;
-const screensaver_t screensaver_list[3] = {
+const int MAX_ID = 4;
+const screensaver_t screensaver_list[4] = {
 {"first screensaver", &first_screensaver},
 {"second screensaver", &second_screensaver},
-{"third screensaver", &third_screensaver}
+{"third screensaver", &third_screensaver},
+{"lines", &lines}
 };

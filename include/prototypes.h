@@ -22,7 +22,9 @@ framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
 void put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y,
 sfColor color);
 void display_framebuffer(ssv_data_t *data);
+void reset_framebuffer(framebuffer_t *fb, sfColor color);
 
 int first_screensaver(ssv_data_t *data);
 int second_screensaver(ssv_data_t *data);
 int third_screensaver(ssv_data_t *data);
+int lines(ssv_data_t *data);
