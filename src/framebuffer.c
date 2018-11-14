@@ -26,6 +26,8 @@ sfColor color)
 {
     unsigned int position = (framebuffer->width * y + x) * 4;
 
+    if (x >= framebuffer->width || y >= framebuffer->height)
+        return;
     framebuffer->pixels[position] = color.r;
     framebuffer->pixels[position + 1] = color.g;
     framebuffer->pixels[position + 2] = color.b;
