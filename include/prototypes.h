@@ -26,7 +26,10 @@ sfColor color);
 void display_framebuffer(ssv_data_t *data);
 void reset_framebuffer(framebuffer_t *fb, sfColor color);
 
+void cycle_hue(sfColor *color);
+sfColor random_hue(void);
+
 int first_screensaver(ssv_data_t *data);
-int second_screensaver(ssv_data_t *data);
+int bouncing(ssv_data_t *data);
 int squares(ssv_data_t *data);
 int lines(ssv_data_t *data);
