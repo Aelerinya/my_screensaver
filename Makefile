@@ -9,6 +9,7 @@ MAIN = src/main.c
 SRC = 	src/errors.c \
 	src/load_screensaver.c \
 	src/framebuffer.c \
+	src/colors.c \
 	$(wildcard src/screensavers/*.c )
 OBJ = $(notdir $(MAIN:.c=.o)) $(notdir $(SRC:.c=.o))
 
