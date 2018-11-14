@@ -12,7 +12,7 @@ SRC = 	src/errors.c \
 	$(wildcard src/screensavers/*.c )
 OBJ = $(notdir $(MAIN:.c=.o)) $(notdir $(SRC:.c=.o))
 
-CSFML = -lcsfml-graphics -lcsfml-window -lcsfml-system
+CSFML = -lcsfml-graphics -lcsfml-window -lcsfml-system -lm
 LIB = my
 L_PATH = ./lib/my/
 I_PATH = ./include/
