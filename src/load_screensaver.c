@@ -53,6 +53,10 @@ int event_loop(ssv_data_t *data)
             return (0);
         }
     }
+    if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
+        sfRenderWindow_close(data->window);
+        return (0);
+    }
     return change_screensaver(data);
 }
 
@@ -73,7 +77,7 @@ ssv_data_t *init_ssv_data(int ssv)
     sfVideoMode mode = {fb->width, fb->height, 32};
 
     data->window = sfRenderWindow_create(mode, "My screensaver",
-    sfDefaultStyle, NULL);
+    sfFullscreen, NULL);
     sfRenderWindow_setFramerateLimit(data->window, 60);
     data->texture = sfTexture_create(fb->width, fb->height);
     data->sprite = sfSprite_create();

@@ -33,6 +33,7 @@ int disp_usage(void)
     my_putstr("USER INTERACTIONS\n");
     my_putstr(" LEFT_ARROW       switch to the previous animation.\n");
     my_putstr(" RIGHT_ARROW      switch to the next animation.\n");
+    my_putstr(" ESCAPE           exit the program.\n");
     return (0);
 }
 
