@@ -29,7 +29,10 @@ void reset_framebuffer(framebuffer_t *fb, sfColor color);
 void cycle_hue(sfColor *color);
 sfColor random_hue(void);
 
+int load_raw_image_in_framebuffer(framebuffer_t *fb, char const *filepath);
+
 int colorfull_noise(ssv_data_t *data);
 int bouncing(ssv_data_t *data);
 int squares(ssv_data_t *data);
 int lines(ssv_data_t *data);
+int display_image(ssv_data_t *data);
