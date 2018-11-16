@@ -43,3 +43,10 @@ void reset_framebuffer(framebuffer_t *fb, sfColor color)
         fb->pixels[i + 3] = color.a;
     }
 }
+
+void draw_rect(framebuffer_t *fb, sfIntRect rect, sfColor color)
+{
+    for (int i = 0; i < rect.width; i++)
+        for (int j = 0; j < rect.height; j++)
+            put_pixel(fb, rect.left + i, rect.top + j, color);
+}
