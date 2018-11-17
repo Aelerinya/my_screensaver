@@ -19,6 +19,7 @@ int start_screensaver(int ssv)
 
     srand(time(NULL));
     while (sfRenderWindow_isOpen(data->window)) {
+        reset_framebuffer(data->fb, sfBlack);
         screensaver_list[data->ssv - 1].f(data);
         sfClock_restart(data->elapsed_time);
     }
