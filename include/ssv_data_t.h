@@ -6,10 +6,11 @@
 */
 
 typedef struct ssv_data {
-    sfRenderWindow *window;
-    sfTexture *texture;
-    sfSprite *sprite;
-    framebuffer_t *fb;
-    int ssv;
-    sfClock* elapsed_time;
+sfRenderWindow *window;
+sfTexture *texture;
+sfSprite *sprite;
+framebuffer_t *fb;
+int ssv;
+sfClock* elapsed_time;
+int lock;
 } ssv_data_t;
