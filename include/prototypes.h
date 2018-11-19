@@ -9,6 +9,7 @@
 #include "framebuffer_t.h"
 #include "ssv_data_t.h"
 #include "screensaver_t.h"
+#include "linked_list_t.h"
 
 int disp_error_in_arguments(int ac);
 int disp_usage(void);
@@ -25,6 +26,7 @@ void put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y,
 sfColor color);
 void display_framebuffer(ssv_data_t *data);
 void reset_framebuffer(framebuffer_t *fb, sfColor color);
+void draw_rect(framebuffer_t *fb, sfIntRect rect, sfColor color);
 
 void cycle_hue(sfColor *color);
 sfColor random_hue(void);
@@ -36,3 +38,7 @@ int bouncing(ssv_data_t *data);
 int squares(ssv_data_t *data);
 int lines(ssv_data_t *data);
 int display_image(ssv_data_t *data);
+int snake(ssv_data_t *data);
+void snake_get_input(sfVector2i *velocity);
+int snake_catch_lose(framebuffer_t *fb, linked_list_t *tail,
+linked_list_t *head);
