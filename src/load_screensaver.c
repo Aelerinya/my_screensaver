@@ -37,7 +37,9 @@ int change_screensaver(ssv_data_t *data)
         data->ssv = (data->ssv > 1) ? data->ssv - 1 : MAX_ID;
         return (0);
     } else if ((sfKeyboard_isKeyPressed(sfKeyRight) &&
-    elapsed > min_interval) || (elapsed > interval && data->lock == 0)) {
+    elapsed > min_interval) || (elapsed > interval && data->lock == 0) ||
+    data->lock == -1) {
+        data->lock = 0;
         data->ssv = (data->ssv < MAX_ID) ? data->ssv + 1 : 1;
         return (0);
     }
