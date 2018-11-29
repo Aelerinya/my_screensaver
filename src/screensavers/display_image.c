@@ -10,7 +10,7 @@
 
 int display_image(ssv_data_t *data)
 {
-    load_raw_image_in_framebuffer(data->fb, "bitmaps/victor.data");
+    load_raw_image_in_framebuffer(data->fb, "bitmaps/epitech.data");
     while(event_loop(data)) {
         display_framebuffer(data);
     }
