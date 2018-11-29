@@ -42,3 +42,4 @@ int snake(ssv_data_t *data);
 void snake_get_input(sfVector2i *velocity);
 int snake_catch_lose(framebuffer_t *fb, linked_list_t *tail,
 linked_list_t *head);
+int phantoms(ssv_data_t *data);
