@@ -82,6 +82,7 @@ ssv_data_t *init_ssv_data(int ssv)
     data->window = sfRenderWindow_create(mode, "My screensaver",
     sfFullscreen, NULL);
     sfRenderWindow_setFramerateLimit(data->window, 60);
+    sfRenderWindow_setMouseCursorVisible(data->window, sfFalse);
     data->texture = sfTexture_create(fb->width, fb->height);
     data->sprite = sfSprite_create();
     data->fb = fb;
