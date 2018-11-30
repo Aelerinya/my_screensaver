@@ -22,6 +22,7 @@ ssv_data_t *init_ssv_data(int ssv);
 int event_loop(ssv_data_t *data);
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+sfColor *get_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y);
 void put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y,
 sfColor color);
 void display_framebuffer(ssv_data_t *data);

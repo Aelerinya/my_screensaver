@@ -34,6 +34,20 @@ sfColor color)
     framebuffer->pixels[position + 3] = color.a;
 }
 
+sfColor *get_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y)
+{
+    sfColor *color = malloc(sizeof(sfColor));
+    unsigned int position = (framebuffer->width * y + x) * 4;
+
+    if (x >= framebuffer->width || y >= framebuffer->height || !color)
+        return NULL;
+    color->r = framebuffer->pixels[position];
+    color->g = framebuffer->pixels[position + 1];
+    color->b = framebuffer->pixels[position + 2];
+    color->a = framebuffer->pixels[position + 3];
+    return color;
+}
+
 void reset_framebuffer(framebuffer_t *fb, sfColor color)
 {
     for (unsigned int i = 0; i < fb->width * fb->height * 4; i += 4) {
